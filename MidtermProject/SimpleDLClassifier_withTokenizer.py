@@ -216,6 +216,8 @@ for i in range(training_pass):
     loss, accuracy = train(model, train_loader, optimizer, device)
     print(f"Pass {i+1}/{training_pass}, Train Loss: {loss:.4f}, Accuracy: {accuracy:.2f}%")
 train_end_time = time.time()
+elapsed_time = train_end_time - train_start_time
+print(f"Elapsed time in training : {elapsed_time:.6f} seconds")
 
 test_start_time = time.time()
 test_accuracy, per_LLM_accuracy, precision, recall, f1 = evaluate(model, test_loader, device)
