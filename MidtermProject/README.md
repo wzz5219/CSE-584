@@ -1,38 +1,40 @@
 Directories:
 
-data -> this holds all the text completion data. It has 5 files. Each file name is like this <LLM_name>.csv. I have used 5 differnet vendors LLM model. 
-So, I didnt put exact model name here, rather just used vendor name.
-
-#textcompletion -> this folder has python scripts to generate suffixes given "llama_prefixes.csv" file. A few models (bert, LLAMA) are used offline. So, those models needs to be put here. 
-               Also, other models use APIs(and necessary py packages) for inference suffixes. So, you need  APIs
+# data 
+this holds all the text completion data. It has 5 files. Each file name is like this <LLM_name>.csv. I have used 5 differnet vendors LLM model.  
+So, I didnt put exact model name here, rather just used vendor name.  
 
 
-Classifier:
-I have made 3 classifiers. 
----SimpleDLClassifier. you do not need anything to run this. it has a simple NN model and it uses "data" to train/test the mdoel.
----SimpleDLClassifier_withTokenizer.py.To run this, you need pretrained tokenizer from Hugging Face. In my code, i used cache directory, so, during first run, the tokenizer/model will be loaded in that directory for later use.
+# textcompletion 
+this folder has python scripts to generate suffixes given "llama_prefixes.csv" file. A few models (bert, LLAMA) are used offline. So, those models needs to be put here.  
+Also, other models use APIs(and necessary py packages) for inference suffixes. So, you need  APIs
+
+
+# Classifier
+I have made 3 classifiers.  
+---SimpleDLClassifier. you do not need anything to run this. it has a simple NN model and it uses "data" to train/test the mdoel.  
+---SimpleDLClassifier_withTokenizer.py.To run this, you need pretrained tokenizer from Hugging Face. In my code, i used cache directory, so, during first run, the tokenizer/model will be loaded in that directory for later use.  
 ---DLClassifier.py. This used both pretrained tokenizer and model(bert-base-uncased). 
 
 
 Necessary packages: pytorch, transformers, numpy, scikit-learn, pandas, accelerator (you can use pip to install all of these)
 
-Run:
+# Run:
 
-<Classifier>.py <dataset_size> <number_of_training_pass> <test size portion> <0/1>
+<Classifier>.py <dataset_size> <number_of_training_pass> <test size portion> <0/1>  
 
-1st: Classifier that you need to run (any 1 of 3 classifier)
-2nd: dataset_size: number of datapoints from each LLM dataset. MAX=3000.
-3rd: number_of_training_pass. it can be any 1 or any numbers > 1. but the higher the pass number, the longer time , the training takes 
-4th: test portion. (0 < X < 1), 0.2 means 20% of all data will be for test cases. 
-5th: 0 or 1. This is an strategy. when 
-        (balnced)0-> it will divide each LLM dataset in train-test ratio , and then each LLM's train is merged to final train dataset.
-            and each LLM's test is merged to final test dataset. (this creates balanced) data
+1st: Classifier that you need to run (any 1 of 3 classifier)  
+2nd: dataset_size: number of datapoints from each LLM dataset. MAX=3000.  
+3rd: number_of_training_pass. it can be any 1 or any numbers > 1. but the higher the pass number, the longer time , the training takes  
+4th: test portion. (0 < X < 1), 0.2 means 20% of all data will be for test cases.  
+5th: 0 or 1. This is an strategy. when  
+        (balnced) 0  -> it will divide each LLM dataset in train-test ratio , and then each LLM's train is merged to final train dataset.
+            and each LLM's test is merged to final test dataset. (this creates balanced) data.  
+            (Unbalanced) 1  -> it will first combine all the dataset together. then it will divide whole dataset into train test based on 4th parameter.  
+        
 
-
-
-        (Unbalanced)1-> it will first combine all the dataset together. then it will divide whole dataset into train test based on 4th parameter.
-
-Sample run and output:
+```
+# Sample run and output:
 python3 SimpleDLClassifier.py 3000 3 0.2 1
 ./data/mistral.csv
 Number of rows in the DataFrame after skipping bad lines: 3000
@@ -126,4 +128,4 @@ LLM 3 Accuracy: 5.67%
 LLM-name: mistral Accuracy: 5.67%
 LLM 4 Accuracy: 31.83%
 LLM-name: distilgpt2 Accuracy: 31.83%
-Elapsed time in testing : 1.147132 seconds
+Elapsed time in testing : 1.147132 seconds```
