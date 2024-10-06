@@ -1,9 +1,9 @@
 Directories:
 
-data -> this holds all the text completion data. It has 5 files. Each file name is like this <LLM_name>.csv. I have used 5 differnet vendors LLM model. 
+#data -> this holds all the text completion data. It has 5 files. Each file name is like this <LLM_name>.csv. I have used 5 differnet vendors LLM model. 
 So, I didnt put exact model name here, rather just used vendor name.
 
-textcompletion -> this folder has python scripts to generate suffixes given "llama_prefixes.csv" file. A few models (bert, LLAMA) are used offline. So, those models needs to be put here. 
+#textcompletion -> this folder has python scripts to generate suffixes given "llama_prefixes.csv" file. A few models (bert, LLAMA) are used offline. So, those models needs to be put here. 
                Also, other models use APIs(and necessary py packages) for inference suffixes. So, you need  APIs
 
 
