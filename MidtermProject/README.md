@@ -128,4 +128,34 @@ LLM 3 Accuracy: 5.67%
 LLM-name: mistral Accuracy: 5.67%
 LLM 4 Accuracy: 31.83%
 LLM-name: distilgpt2 Accuracy: 31.83%
-Elapsed time in testing : 1.147132 seconds```
+Elapsed time in testing : 1.147132 seconds
+```
+
+
+# Run for Experimenatal results
+
+```
+Graph1:
+python3 SimpleDLClassifier.py 1000 5 0.2 1
+python3 SimpleDLClassifier.py 1000 10 0.2 1
+python3 SimpleDLClassifier.py 1000 20 0.2 1
+python3 SimpleDLClassifier.py 1000 30 0.2 1
+
+Graph2:
+python3 SimpleDLClassifier.py 3000 5 0.2 1
+python3 SimpleDLClassifier.py 3000 10 0.2 1
+python3 SimpleDLClassifier.py 3000 20 0.2 1
+python3 SimpleDLClassifier.py 3000 30 0.2 1
+
+Graph3:
+python3 SimpleDLClassifier_withTokenizer.py 3000 5 0.2 1
+python3 SimpleDLClassifier_withTokenizer.py 3000 10 0.2 1
+python3 SimpleDLClassifier_withTokenizer.py 3000 20 0.2 1
+python3 SimpleDLClassifier_withTokenizer.py 3000 30 0.2 1
+
+Graph4 and Graph 5:
+python3 SimpleDLClassifier.py 3000 20 0.2 1
+python3 SimpleDLClassifier_withTokenizer.py 3000 20 0.2 1
+python3 DLClassifier.py 3000 5 0.2 1
+
+```
